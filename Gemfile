@@ -14,7 +14,7 @@ gem 'decent_exposure'
 gem 'decent_decoration'
 gem 'flatui-rails', github: 'pkurek/flatui-rails'
 gem 'therubyracer'
-
+gem 'rails_12factor', group: :production
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
