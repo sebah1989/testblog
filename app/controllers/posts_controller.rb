@@ -11,6 +11,8 @@ class PostsController < ApplicationController
     end
   end
 
+  helper_method :post_owner?
+
   def index
   end
 
@@ -43,6 +45,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    post.user = current_user
     if post.save
       redirect_to action: :index
     else
@@ -50,8 +53,11 @@ class PostsController < ApplicationController
     end
   end
 
-  private
+  def post_owner?
+    current_user.owner? post
+  end
 
+  private
   def post_params
     return if %w{mark_archived}.include? action_name
     params.require(:post).permit(:body, :title, :tags)

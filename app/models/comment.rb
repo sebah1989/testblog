@@ -28,6 +28,10 @@ class Comment
     update_attributes({ abusive: false })
   end
 
+  def sum_down_votes
+    votes.where({ value: -1 }).count
+  end
+
   private
   def vote(user_id, value)
     unless votes.where({ user_id: user_id }).any?

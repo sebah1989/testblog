@@ -18,6 +18,7 @@ gem 'rails_12factor', group: :production
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
+gem 'font-awesome-rails'
 
 group :development do
   gem 'html2haml'
