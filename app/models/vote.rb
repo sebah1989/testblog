@@ -1,5 +1,5 @@
 class Vote
-	include Mongoid::Document
+  include Mongoid::Document
   include Mongoid::Timestamps
 
   after_create :check_comment
@@ -11,6 +11,6 @@ class Vote
 
   protected
   def check_comment
-  	comment.check_abusive
+    comment.check_abusive
   end
 end

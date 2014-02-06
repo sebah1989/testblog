@@ -3,6 +3,13 @@ class PostsController < ApplicationController
   expose_decorated(:posts) { Post.all }
   expose_decorated(:post, attributes: :post_params)
   expose(:tag_cloud) { Post.tags_with_weight }
+  expose(:comments) do 
+    if current_user.owner? post
+      Comment.where({ post_id: post.id })
+    else
+     Comment.where({ post_id: post.id, abusive: false })
+    end
+  end
 
   def index
   end
