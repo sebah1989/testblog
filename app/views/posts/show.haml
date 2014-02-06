@@ -2,7 +2,7 @@
   %h2
     = post.title
     %small
-      = post.created_at
+      = post.friendly_date
   - if post_owner?
     = link_to "edit", edit_post_path(post), class: 'post__button--edit'
 
@@ -11,29 +11,8 @@
 
   %table
     %tbody
-      - comments.each do |comment|
-        %tr
-          %td
-            = button_to vote_up_post_comment_path(post, comment), method: :post do
-              %i.fa.fa-thumbs-up
-          %td
-            %h4
-              = comment.sum_down_votes
-          %td
-            = button_to vote_down_post_comment_path(post, comment), method: :post do
-              %i.fa.fa-thumbs-down
-          - if post_owner?
-            %td
-              = button_to mark_as_not_abusive_post_comment_path(post, comment), method: :post do
-                %i.fa.fa-comment
-                not abusive
-            %td
-          %td.column1
-            = comment.body
-
-  = simple_form_for([post, post.comments.build]) do |f|
-    = f.input :body, label: "Comment:"
-    = f.button :submit          
+      = render comments
+  = render "comments/form"         
 
   .post__tags-list.tagsinput
     - post.tags_array.each do |tag|

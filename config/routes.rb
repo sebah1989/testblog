@@ -6,7 +6,7 @@ Easyblog::Application.routes.draw do
     member do
       post :mark_archived
     end
-    resources :comments do
+    resources :comments, only: [:new, :create] do
       member do
         post :vote_up
         post :vote_down

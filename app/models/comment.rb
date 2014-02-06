@@ -32,6 +32,10 @@ class Comment
     votes.where({ value: -1 }).count
   end
 
+  def sum_votes
+    votes.map(&:value).reduce(:+) || 0
+  end
+
   private
   def vote(user_id, value)
     unless votes.where({ user_id: user_id }).any?
