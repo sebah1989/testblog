@@ -22,6 +22,11 @@ class CommentsController < ApplicationController
     vote_comment.vote_down(current_user.id)
     redirect_to post
   end
+
+  def mark_as_not_abusive
+    vote_comment.mark_as_not_abusive
+    redirect_to post
+  end
   
   private
   def comment_params

@@ -23,6 +23,11 @@ class Comment
     vote(user_id, -1)
   end
 
+  def mark_as_not_abusive
+    votes.where({ value: -1 }).delete
+    update_attributes({ abusive: false })
+  end
+
   private
   def vote(user_id, value)
     unless votes.where({ user_id: user_id }).any?
