@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!
   expose_decorated(:posts) { Post.all }
   expose_decorated(:post, attributes: :post_params)
-  expose(:tag_cloud) { [] }
+  expose(:tag_cloud) { Post.tags_with_weight }
 
   def index
   end
