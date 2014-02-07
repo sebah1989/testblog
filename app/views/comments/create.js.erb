@@ -1,6 +1,4 @@
 $("<%= j (render comment)%>").appendTo("#comments");
-$('#new_comment').submit(function(){
-  setTimeout(function() {
-    $('#comment_body').val('');
-  },100);
-});
+setTimeout(function() {
+  $('#comment_body').val('');
+},100);
