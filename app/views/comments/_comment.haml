@@ -10,7 +10,7 @@
       %i.fa.fa-thumbs-down
   - if post_owner?
     %td
-      = button_to mark_as_not_abusive_post_comment_path(post, comment), method: :post do
+      = button_to mark_as_not_abusive_post_comment_path(post, comment), remote: true, method: :post do
         %i.fa.fa-comment
         not abusive
     %td
