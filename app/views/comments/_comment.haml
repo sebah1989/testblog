@@ -1,12 +1,12 @@
 %tr
   %td
-    = button_to vote_up_post_comment_path(post, comment), method: :post do
+    = button_to vote_up_post_comment_path(post, comment), remote: true, method: :post do
       %i.fa.fa-thumbs-up
   %td
-    %h4
+    %h4{ id: "#{comment.id}" }
       = "#{comment.sum_votes} (#{comment.sum_down_votes})"
   %td
-    = button_to vote_down_post_comment_path(post, comment), method: :post do
+    = button_to vote_down_post_comment_path(post, comment), remote: true, method: :post do
       %i.fa.fa-thumbs-down
   - if post_owner?
     %td
