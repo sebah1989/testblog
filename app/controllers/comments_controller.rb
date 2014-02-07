@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
   expose(:comment, attributes: :comment_params)
   expose(:comments, ancestor: :post) 
   expose(:vote_comment) { post.comments.find(params[:id]) }
+  helper_method :post_owner?
 
   def new
   end
@@ -28,6 +29,10 @@ class CommentsController < ApplicationController
   def mark_as_not_abusive
     vote_comment.mark_as_not_abusive
     respond_with(post)
+  end
+
+  def post_owner?
+    current_user.owner? post
   end
   
   private
