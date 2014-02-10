@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   respond_to :html, :json, :js
 
-	expose(:post)
+  expose(:post)
   expose(:comment, attributes: :comment_params)
   expose(:comments, ancestor: :post) 
   expose(:vote_comment) { post.comments.find(params[:id]) }

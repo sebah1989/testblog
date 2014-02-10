@@ -11,6 +11,6 @@ class PostDecorator < Draper::Decorator
   end
 
   def friendly_date
-  	created_at.strftime("%d/%m/%Y : %H:%M")
+    created_at.strftime("%d/%m/%Y : %H:%M")
   end
 end
